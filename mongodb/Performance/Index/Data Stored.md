@@ -1,0 +1,20 @@
+#Data Stored
+##Wired Tiger
+将数据分成collection和index分别存储
+默认都在db文件夹中  
+--directoryperdb  
+给dbs创建一个文件夹，存放collections和index  
+--wiredTigerDirectoryForIndexes 
+将collection和index分开存
+
+分布优点:
+多个disk可以同时I/O操作提高效率
+
+##数据存储
+- mongod与disk直接互交
+  对于小文件操作
+- RAM
+  数据再写入disk之前，会存到ram中
+  使用writeConcern:{w:3}或者设置Checkpoint周期性同步和刷新刷剧
+## 日志
+  writeConcern:{j:true}在写数据时强制同步到journal，在正真被写入disk前
