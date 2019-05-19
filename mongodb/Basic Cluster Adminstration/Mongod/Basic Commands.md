@@ -39,8 +39,8 @@ db.<collection>.createIndex(
   { "name": "name_index" }
 )
 ```
-## rs.<method>()
+## rs.\<method>()
 副本部署和管理
 
-## sh.<method>()
+## sh.\<method>()
 控制分片集群

@@ -3,7 +3,7 @@
 有索引用索引搜索，B-tree构造
 ## Single Field Indexes
 - 最基础的索引
-- db.<collection>.createIndex({<field>:<direction>})
+- db.\<collection>.createIndex({\<field>:\<direction>})
 捕获单个field
 - key特征
   - 来自几个field
@@ -13,7 +13,7 @@
   - 单个query可以找到几个不同值
 
 ### 创建索引
-db.<collection>.createIndex()
+db.\<collection>.createIndex()
 可以使用点标识法创建索引文档中的子字段  
 
 搜索的时候，索引存在会先过滤索引  
@@ -44,7 +44,7 @@ db.<collection>.createIndex(
   { partialFilterExpression: {"start":[$exists:trus}]}}
 )
 ```
-想要使用局部索引，我们必须要是索引集合的子集
+想要使用局部索引，我们必须要是索引集合的子集  
 上面我们创建了start存在的的局部索引  
 需要用$exists:true才会触发index
 ```
@@ -61,12 +61,12 @@ find({start:{$gt:5,$exists:true}})
 ```
 在使用一段字符搜索时,t-shirt  
 
-正则
+正则  
 find({productName:/T-shirt/});  
 性能不佳
 
-字符串索引
-createIndex({productNam:"text"})
+字符串索引  
+createIndex({productNam:"text"})  
 find({$text:{$search:"t-shirt"}})
 
 服务器动作  

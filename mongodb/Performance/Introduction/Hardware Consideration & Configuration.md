@@ -1,4 +1,4 @@
-# 
+# 硬件配置
 - Memory
   - Aggregation
   - Index Traversing

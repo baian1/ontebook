@@ -7,8 +7,8 @@ find /usr/bin/ -name "mongo*"
 
 ## mongostat
 
-insert|query|update|delete|getmore|command|dirty|used|flushes|vsize|res|qrw|arw|net_in|net_out|conn|time|
-
+insert|query|update|delete|getmore|command|dirty|used|flushes|vsize|res|qrw|arw|net_in|net_out|conn|time|  
+服务信息字段
 ## mongorestore and mongodump
 数据是BSON二进制格式  
 
