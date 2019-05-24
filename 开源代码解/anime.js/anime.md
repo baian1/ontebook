@@ -9,32 +9,6 @@
   let children, childrenLength = 0;
   let resolve = null;
 ```
-## 创建instance
-```
-let instance = createNewInstance(params);
-
-function createNewInstance(params) {
-  const instanceSettings = replaceObjectProps(defaultInstanceSettings, params);
-  const tweenSettings = replaceObjectProps(defaultTweenSettings, params);
-  const properties = getProperties(tweenSettings, params);
-  const animatables = getAnimatables(params.targets);
-  const animations = getAnimations(animatables, properties);
-  const timings = getInstanceTimings(animations, tweenSettings);
-  const id = instanceID;
-  instanceID++;
-  return mergeObjects(instanceSettings, {
-    id: id,
-    children: [],
-    animatables: animatables,
-    animations: animations,
-    duration: timings.duration,
-    delay: timings.delay,
-    endDelay: timings.endDelay
-  });
-}
-```
-instanceSetting,与运动起始设置有关参数,loop,direction,autoplay,timelineOffset等
-tweenSettings 与运动轨迹有关参数duration,delay,endDelay,easing,round等
 
 ## 运动
 动画都是有时间帧的，这里根据时间，计算出时间帧
@@ -124,15 +98,18 @@ function setAnimationsProgress(insTime) {
   const animations = instance.animations;
   const animationsLength = animations.length;//遍历运动数组
   while (i < animationsLength) {
-    const anim = animations[i];
+    const anim = animations[i];  //所有动作,一个个动作遍历
     const animatable = anim.animatable;
     const tweens = anim.tweens;
     const tweenLength = tweens.length - 1;
     let tween = tweens[tweenLength];
     // Only check for keyframes if there is more than one tween
     if (tweenLength) tween = filterArray(tweens, t => (insTime < t.end))[0] || tween;
+
+    //根据时间计算出运动到整体的哪个阶段，进度条到哪儿了
     const elapsed = minMax(insTime - tween.start - tween.delay, 0, tween.duration) / tween.duration;
     const eased = isNaN(elapsed) ? 1 : tween.easing(elapsed);
+
     const strings = tween.to.strings;
     const round = tween.round;
     const numbers = [];
@@ -143,6 +120,8 @@ function setAnimationsProgress(insTime) {
       const toNumber = tween.to.numbers[n];
       const fromNumber = tween.from.numbers[n] || 0;
       if (!tween.isPath) {
+
+        //根据进度条计算出实际位置
         value = fromNumber + (eased * (toNumber - fromNumber));
       } else {
         value = getPathProgress(tween.value, eased * toNumber);
