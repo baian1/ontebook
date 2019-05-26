@@ -10,11 +10,11 @@
 分布优点:
 多个disk可以同时I/O操作提高效率
 
-##数据存储
+## 数据存储
 - mongod与disk直接互交  
   对于小文件操作
 - RAM中转   
   数据再写入disk之前，会存到ram中，集群数据复制  
   使用writeConcern:{w:3}或者设置Checkpoint周期性同步和刷新刷剧
-## 日志
-  writeConcern:{j:true}在写数据时强制同步到journal，在正真被写入disk前
+## journal 日志
+  writeConcern:{j:true}在写数据时,需要等待数据被写入disk的日志中

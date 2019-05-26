@@ -14,11 +14,11 @@ secret handshake
 ## authorization(授权)
 Role Base Access Control
 
-- Database Administrator
-Create User
-Create Index
-- Developer
-White Data
-Read Data
--Data Scientist
-Read Data
+- Database Administrator  
+Create User  
+Create Index  
+- Developer  
+White Data 
+Read Data  
+- Data Scientist  
+Read Data  

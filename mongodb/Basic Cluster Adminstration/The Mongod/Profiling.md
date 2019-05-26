@@ -1,8 +1,8 @@
 # [Profiling the Database](https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/)
 
-db.getProfilingLevel()
-db.setProfilingLevel(1,{"slowns":100})
-db.getCollectionStatus()
+db.getProfilingLevel()  
+db.setProfilingLevel(1,{"slowns":100})  
+db.getCollectionStatus()  
 
 启用会会产生一个system.profile
 
@@ -59,10 +59,10 @@ db.system.profile.find().pretty()
 ```
 
 ## configuration
-operationProfiling:
-  mode: string
-  slowOpThresholdMs: int
-  slowOpSampleRate: double
+operationProfiling:  
+- mode: string  
+- slowOpThresholdMs: int  
+- slowOpSampleRate: double  
   
 |Level	|Description|
 |-------|-----------|

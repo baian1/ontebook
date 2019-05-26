@@ -1,6 +1,6 @@
 # Basic Commands
 
-## db.<method>()
+## db.\<method>()
 与数据库互交
 
 ### 用户管理
@@ -16,8 +16,8 @@
 ### 数据库状态
 - db.serverStatus()
 ### 数据库命令 用于底层互交
-- db.runCommand({\<COMMAND\>})
-- db.commandHelp("\<command\>")
+- db.runCommand({\<COMMAND>})
+- db.commandHelp("\<command>")
 
 Creating index with Database Command:  
 ```
