@@ -31,6 +31,8 @@ entries是一个数组，每个元素FileEntry或DirectoryEntry
   - FileReader.onloadstart
   - FileReader.onloadend
   - FileReader.onprogress
+progress表示读取文件到内存的进展
+
 
 文件切片上传
 ```
