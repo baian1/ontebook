@@ -27,6 +27,13 @@ mongod启动配置
 - replication.replSetName  
 集群名字
 
+1. 用mongo进入其中一个节点
+2. 使用rs.initiate()初始化配置
+3. 给这个节点创建一个root角色  配置中,集群启动了认证登入
+4. 使用mongod 连接 \<集群名>/\<数据库地址>
+5. rs.status()查看集群状态
+6. 使用re.add()添加其他辅助节点
+
 ## 集群配置
 ```
 {
