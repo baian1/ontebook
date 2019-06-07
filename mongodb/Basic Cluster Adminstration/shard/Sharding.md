@@ -26,13 +26,13 @@ primary shard，该集群中非分片数据都将在保存在这个碎片上
 不用操作，mongos自己维护
 - database  
   每个集群是否分片
-- collections
+- collections  
   分片信息
-- Shards
+- Shards  
   每个集群配置
-- Chunks
+- Chunks  
   分片的具体信息
-- Mongos
+- Mongos  
 
 # shard key
 数据分块,key需要存在于每个document  
