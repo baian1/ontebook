@@ -1,7 +1,8 @@
 # CURD
 ## index
 index建立经验法则  
-equal sort range
+equal sort range  
+因为只有查询相等或者sort才会在index中进行,如果执行了range查询再sort,会导致在内存中进行排序
 ## Covered Queries
 假如通过指定相应字段为1,index包含了所有查询的信息，会直接返回不去查询doc 
 如果指定字段0，由于不能确定剩余字段，会查询文档  
