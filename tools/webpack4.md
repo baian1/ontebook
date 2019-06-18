@@ -6,7 +6,6 @@ entry: {[entryChunkName: string]: string|Array\<string>}
 对象语法可以确定多个入口
 note: 不要为不是入口的文件添加
 
-
 ## output
 编译完的文件输出  
 - path  
@@ -201,3 +200,6 @@ module.exports = {
   }
 };
 ```
+
+## devtool
+此选项控制是否生成，以及如何生成 source map。
