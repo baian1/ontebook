@@ -15,6 +15,6 @@
   对于小文件操作
 - RAM中转   
   数据再写入disk之前，会存到ram中，集群数据复制  
-  使用writeConcern:{w:3}或者设置Checkpoint周期性同步和刷新刷剧
+  使用writeConcern:{w:3}或者设置Checkpoint周期性同步和刷新数据
 ## journal 日志
   writeConcern:{j:true}在写数据时,需要等待数据被写入disk的日志中

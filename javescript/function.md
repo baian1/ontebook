@@ -1,0 +1,1 @@
+可以通过function对象的length判断他需要参数个数
