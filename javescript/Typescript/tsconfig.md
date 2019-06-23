@@ -13,3 +13,10 @@
 - 如果遇到循环，我们报告错误。
 - 继承配置文件中的files、include和exclude会重写基本配置文件中相应的值。
 - 在配置文件中找到的所有相对路径将相对于它们来源的配置文件来解析。
+
+# pretty
+如果输出设备能使用彩色文本,使用pretty将会报错  
+--pretty false取消输出彩色文字
+
+# declarationMap
+输出.d.ts.map文件,可以映射到ts文件
