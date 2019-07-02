@@ -191,7 +191,7 @@ resolve: {
 - enforceModuleExtension  
   modules第三方模块扩展的扩展
 - resolve.extensions
-  使用指定扩展名尝试不带扩张名程序
+  使用指定扩展名尝试不带扩展名的文件
 ```
 module.exports = {
   //...
