@@ -34,7 +34,8 @@ for (let i = 0; i < listeners.length; i++) {
   listener()
 }
 ```
-dispatch中调用Listener
+是在dispatch中调用的  
+触发dispatch时也会触发左右Listener
 
 ## 暴露函数
 
@@ -43,6 +44,7 @@ dispatch中调用Listener
 function dispatch(action) {
   try {
     isDispatching = true
+    //根据state和action返回新的state
     currentState = currentReducer(currentState, action)
   } finally {
     isDispatching = false
@@ -67,4 +69,7 @@ function replaceReducer(nextReducer) {
 用于分割代码后,动态加载数据的时候改变reducer时使用  
 改变reducer后使用dipatch,用旧树的数据填充新树
 
+
+### subscribe
+增加加listener
 ### observable

@@ -33,7 +33,8 @@ const Context = context
 并继承他的静态属性
 
 ## store
-当store改变时,child的props都会根据改变更新
+当store改变时,child的props都会根据改变更新  
+childPropsSelector是一个根据新的state和ownProps返回组合后的props的函数
 ```
 function createChildSelector(store) {
   return selectorFactory(store.dispatch, selectorFactoryOptions)
