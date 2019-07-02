@@ -40,11 +40,13 @@ type T33<T> = T extends never ? true : false;  // Deferred
 type tttt = [number, number]
 
 type aaa = {
-  [P in keyof tttt]: P extends number?Promise<tttt[P]>:P;
+  [P in keyof tttt]: P extends number ? Promise<tttt[P]> : P;
 }
 
+type a=getKey<tttt>
+
 type getKey<T> = {
-  [P in keyof T]: P extends number?Promise<T[P]>:P;
+  [P in keyof T]: P extends string ? Promise<T[P]> : P;
 }
 
 type MapToPromise<T> = { [K in keyof T]: Promise<T[K]> };
@@ -53,4 +55,22 @@ type Coordinate = [number, number]
 
 type PromiseCoordinate = MapToPromise<Coordinate>; // [Promise<number>, Promise<number>]
 
-let a: aaa = [Promise.resolve(1), Promise.resolve(1)];
+let a: a = [Promise.resolve(1), Promise.resolve(1)];
+
+function readImage(path: string, callback: (err: any, image: Image) => void) {
+  // ...
+}
+
+readImage.sync = (path: string) => {
+  const contents = fs.readFileSync(path);
+  return decodeImageSync(contents);
+}
+
+function spread<T, U>(t: T, u: U) {
+  return { ...t, ...u };  // T & U
+}
+type big=bigint
+let bignumber:big=100n;
+declare let x: { a: string, b: number };
+declare let y: { b: string, c: boolean };
+let s2 = spread(x, y);

@@ -77,3 +77,11 @@ type P5 = string[][0];  // string
 
 let a:number=34;
 a=null;
+
+let x = {...{ x: 10, y: 20 }, point:'point'}; 
+
+export const Colors = {
+  red: "RED",
+  blue: "BLUE",
+  green: "GREEN",
+} as const;

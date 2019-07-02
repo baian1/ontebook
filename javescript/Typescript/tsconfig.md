@@ -20,3 +20,9 @@
 
 # declarationMap
 输出.d.ts.map文件,可以映射到ts文件
+
+# strictBindCallApply
+开启后可以使bind call apply都变成严格类型
+
+# extends
+"extends": "@my-team/tsconfig-base"可以进入node_modules解析
