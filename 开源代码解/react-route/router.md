@@ -35,6 +35,11 @@ props中传入了context内容,还有就是props上的location和computeMatch
 ```
 这里我们可以看出这里有context，我们可以直接通过context获取history,location等
 
+## 嵌套路由
+直接在子组件中使用<Route>  
+从父provide中获取match.path添加在这个route的path的前面  
+就可以实现完整匹配才能显示路由内容
+
 # switch
 ```
 //遍历子组件,在没有匹配到路由的时候会一直是下一个element
