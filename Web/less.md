@@ -82,3 +82,21 @@
 # 文件导入
 @import "library"; // library.less
 @import "typo.css";
+
+# ~
+任意字符串保持原意
+```
+@min768: ~"(min-width: 768px)";
+.element {
+  @media @min768 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .element {
+    font-size: 1.2rem;
+  }
+}
+```
+3.4以上版本可以省略~和"",能正常识别
