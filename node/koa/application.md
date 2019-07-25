@@ -44,7 +44,6 @@ use(fn) {
 }
 ```
 老版本Generator转换到新的await/async
-
 将中间件添加到middleware数组中保存
 
 ```
@@ -61,8 +60,11 @@ callback() {
   return handleRequest;
 }
 ```
+服务器的回调函数handleRequest,用箭头函数绑定了this,  
+当有请求的时候将req和res丢到ctx上,然后进行中间件处理
 
-compose(this.middleware)返回一个调用所有中间件的入口函数,执行这个函数后，通过dispatch不断执行中间件处理函数，传入dispatch.bind(null, i + 1)就是中间件的next，调用报错的时候会被外层try捕获并返回Promise.reject，停止执行下一个中间件
+compose(this.middleware)返回一个调用所有中间件的入口函数,执行这个函数后，通过dispatch不断执行中间件处理函数，传入dispatch.bind(null, i + 1)就是中间件的next，调用报错的时候会被外层try捕获并返回Promise.reject，停止执行下一个中间件  
+这个处理过程是直接对ctx进行相应的操作
 ```
 function compose (middleware) {
   return function (context, next) {
