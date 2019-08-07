@@ -24,3 +24,6 @@ filename: '[name].js',
 [id]|模块标识符(module identifier)
 [query]|模块的 query，例如，文件名 ? 后面的字符串
 [function]|The function, which can return filename [string]
+
+# output.publicPath
+此选项指定在浏览器中引用时输出目录的公共URL。
