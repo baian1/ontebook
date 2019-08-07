@@ -22,3 +22,29 @@ HTTP/2通过将信息拆分成帧,通过在另一端重组,实现了在一条链
 # 标头压缩
 1. 它允许通过静态霍夫曼代码对发送的报头字段进行编码，这减少了它们各自的传输大小。
 2. 它要求客户端和服务器都维护和更新先前看到的头字段的索引列表（即，建立共享压缩上下文），然后将其用作有效编码先前传输的值的参考。
+
+# 服务器推送
+http/1.x的资源请求方式都是通过 请求->响应来实现的  
+现在http/2可以根据请求,主动发送与请求相关的资源
+
+nginx实现
+```
+location / {
+  root   /usr/share/nginx/html;
+  index  index.html index.htm;
+  http2_push /style.css;
+  http2_push /example.png;
+}
+```
+
+通过修改响应头实现
+```
+http2_push_preload on;
+location = / {
+    proxy_pass http://upstream;
+}
+//响应头
+Link: </styles.css>; rel=preload; as=style, </example.png>; rel=preload; as=image
+
+//为避免重复推送资源,可以设置cookie来确认是否要推送资源
+```
