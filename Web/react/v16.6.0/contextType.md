@@ -1,7 +1,3 @@
-# context
-
-多个相同的 context,里层的会取代外层
-
 # contextType
 
 通过设置 class 的静态属性,可以通过 this.context 访问  
