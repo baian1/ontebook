@@ -74,3 +74,11 @@ package.json 中的对象会被添加到 process.env,并且在前面加上 npm_p
 ```
 npx https://gist.github.com/zkat/4bc19503fe9e9309e2bfaa2c58074d32
 ```
+
+# 注意事项
+
+编写 node 脚本的时候需要在开头加上,提醒系统使用 node 运行脚本
+
+```
+#!/usr/bin/env node
+```
