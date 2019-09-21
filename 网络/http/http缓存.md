@@ -30,6 +30,9 @@ Cache-Control 字段,HTTP/1.1 中规定的
 - s-maxage=\<seconds>  
   覆盖 max-age 或者 Expires 头，但是仅适用于共享缓存(比如各个代理)，私有缓存会忽略它。
 
+- Expires:时间
+  与 max-age 类似，不会是在一个指定的时间过期
+
 3. 重新验证和重新加载
 
 - must-revalidate  
