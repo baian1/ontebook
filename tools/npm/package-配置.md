@@ -42,6 +42,31 @@ npm 运行脚本的时候可以获取到的设置
 
 包需要的兼容版本
 
+假设保 PackageA 依赖于包 PackageB
+
+1.  直接在 Dependencies 中依赖,会有如下目录结构
+
+```
+|- node_modules
+  |- PackageA
+    |- node_modules
+      |- PackageB
+```
+
+这样我们不能直接使用 packageB,并且再根 node_modules 下还可以安装一个其他版本的 PackageB
+
+2. 在 peerDependencies 声明依赖,会安装到根 node_modules 目录下
+
+```
+|- node_modules
+  |- PackageA
+  |- PackageB
+```
+
+## 适用情况
+
+1. 包的插件,插件是对指定平台版本发布,不兼容升级版本,并且插件不依赖平台(不适合写在 Dependencies),就可以在 peerDependencies 声明宿主环境
+
 # engines
 
 这个包需要的运行环境版本
