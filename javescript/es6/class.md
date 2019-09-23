@@ -12,7 +12,7 @@ class Test {
 }
 ```
 
-字段赋值的时候，如果有继承 class 会自动调用 super 进行初始化
+字段赋值的时候，如果有继承 class 会自动调用 constrtuct 进行初始化
 
 # 继承
 
@@ -32,3 +32,9 @@ B.prototype.construct=B
 ```
 B.__protot__=A
 ```
+
+# super
+
+1. construct 中相当于把 this 传递给父类的 construcr 执行,把属性附加到上面
+2. 方法中 super 指向父的原型链
+3. static 中 super 指向父类
