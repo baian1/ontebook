@@ -47,6 +47,7 @@ services:
     command: redis-server --appendonly yes
     networks:
       - webnet
+//设置一个网络，使各个服务可以相互访问
 networks:
   webnet:
 ```
