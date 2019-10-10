@@ -1,29 +1,36 @@
+# FileSystem
+
+requestFileSystem()是 Google Chrome 专用的方法，该方法使网站或应用可以访问沙盒文件系统以供自己使用。
+
 # File And Directory
 
 ## 两种方式使用
-drop事件中的data中的DataTransferItem.webkitGetAsEntry()，返回FileEntry或者DirectoryEntry  
-input元素的webkitEntries，需要webkitdirectory为true
 
+drop 事件中的 data 中的 DataTransferItem.webkitGetAsEntry()，返回 FileEntry 或者 DirectoryEntry  
+input 元素的 webkitEntries，需要 webkitdirectory 为 true
 
 ## FileEntry
-File文件可以使用file返回File类型
+
+File 文件可以使用 file 返回 File 类型
 
 ## DirectoryEntry
-目录的读取先用createReader()返回一个DirectoryReader对象，
-调用DirectoryReader对象的readEntries方法，输入回调函数(entries)=>void
+
+目录的读取先用 createReader()返回一个 DirectoryReader 对象，
+调用 DirectoryReader 对象的 readEntries 方法，输入回调函数(entries)=>void
 在回调函数内处理文件:  
-entries是一个数组，每个元素FileEntry或DirectoryEntry
+entries 是一个数组，每个元素 FileEntry 或 DirectoryEntry
 
 ## Filereader
+
 - 构造函数  
-  FileReader()返回一个新构造的FileReader。
-- 属性  
-  - FileReader.error  **只读**
-  一个DOMException，表示在读取文件时发生的错误 。  
-  - FileReader.readyState  **只读**
-  表示FileReader状态的数字。  
-  - FileReader.result  **只读**  
-  文件的内容。该属性仅在读取操作完成后才有效。
+  FileReader()返回一个新构造的 FileReader。
+- 属性
+  - FileReader.error **只读**
+    一个 DOMException，表示在读取文件时发生的错误 。
+  - FileReader.readyState **只读**
+    表示 FileReader 状态的数字。
+  - FileReader.result **只读**  
+    文件的内容。该属性仅在读取操作完成后才有效。
 - 事件处理
   - FileReader.onabort
   - FileReader.onerror
@@ -31,16 +38,17 @@ entries是一个数组，每个元素FileEntry或DirectoryEntry
   - FileReader.onloadstart
   - FileReader.onloadend
   - FileReader.onprogress
-progress表示读取文件到内存的进展
-
+    progress 表示读取文件到内存的进展
 
 文件切片上传
+
 ```
 设置两个变量
 用来存储切片的范围
 let start
 let end
 ```
+
 ```
 触发切片的读取
 function getshard(){
@@ -53,6 +61,7 @@ function getshard(){
 }
 
 ```
+
 ```
 切片读取完后的动作
 reader.addEventListener("loadend", loadend);
@@ -78,6 +87,7 @@ async function loadend() {
   }
 }
 ```
+
 ```
 数据上传
 note：跨域,需要后台设置响应头,不然浏览器会对fetch返回信息拦截,读取不到
@@ -138,7 +148,7 @@ function onRequest(request: IncomingMessage, response: ServerResponse) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
-  
+
   //碎片接收
   let out = createWriteStream(`${dir}/${filename}\{${start}-${end}\}`);
   out.on('close', () => {
@@ -162,6 +172,7 @@ function onRequest(request: IncomingMessage, response: ServerResponse) {
   })
 }
 ```
+
 ```
 合并碎片
 export function mergefile(jindir: string, filename: string) {
