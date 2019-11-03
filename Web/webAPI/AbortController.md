@@ -1,8 +1,10 @@
 # AbortController
-控制DOM请求
+
+控制 DOM 请求
 
 ## 用法
-一个AbortController
+
+一个 AbortController
 
 属性：  
 AbortController.signal
@@ -10,7 +12,7 @@ AbortController.signal
 方法：
 AbortController.abort()
 
-```
+```Typescript
 controller = new AbortController();
 
 //将signal最为参数传给fetch
