@@ -70,8 +70,8 @@ dom为同级，将用slot元素替代模板中的slot位置
 <slot><b>fallback content</b></slot>
 ```
 
-| Usage                                         | Call                                 | Result                    |
-| --------------------------------------------- | ------------------------------------ | ------------------------- |
-| `<my-component>component text</my-component>` | slot.assignedNodes();                | [component text]          |
-| `<my-component></my-component>`               | slot.assignedNodes();                | []                        |
-| `<my-component></my-component>`               | slot.assignedNodes({flatten: true}); | [<b>fallback content</b>] |
+| Usage                                         | Call                                 | Result                     |
+| --------------------------------------------- | ------------------------------------ | -------------------------- |
+| `<my-component>component text</my-component>` | slot.assignedNodes();                | [component text]           |
+| `<my-component></my-component>`               | slot.assignedNodes();                | []                         |
+| `<my-component></my-component>`               | slot.assignedNodes({flatten: true}); | [\<b>fallback content</b>] |
