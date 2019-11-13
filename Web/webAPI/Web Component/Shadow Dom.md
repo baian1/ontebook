@@ -7,6 +7,7 @@
 1. 阴影 dom 具有独立的 style 作用域
 2. css :host 表示 shadow host 节点的样式,可以用来覆盖外面的 css,表示根节点选择器  
    外部样式始终胜过影子 DOM 中定义的样式。
+   :host(\<compound-selector-list>) 只有在 host 的属性与该 selector 匹配的时候才会应用类
 3. :host-context(\<selector>) 组件或组建的祖先匹配
 
    ```html

@@ -13,12 +13,13 @@
 3. attributeChangedCallback(attrName, oldVal, newVal)  
    在 dom 元素的 attribute 改变的时候触发(限制:属性需要是 observed attribute 或 该元素的创建阶段 attribute 初始化)
 
-- note: observed attribute
-  ```Typescript
-  static get observedAttributes() {
-    return ['disabled', 'open'];
-  }
-  ```
+   - note: observed attribute
+
+     ```Typescript
+     static get observedAttributes() {
+       return ['disabled', 'open'];
+     }
+     ```
 
 4. adoptedCallback
    custom element has been moved into a new document
