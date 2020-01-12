@@ -1,5 +1,7 @@
 # 变量
+
 可以定义一个变量调用
+
 ```
 @width: 10px;
 @height: @width + 10px;
@@ -15,6 +17,7 @@
 ```
 
 # mixins
+
 ```
 .bordered {
   border-top: dotted 1px black;
@@ -28,6 +31,7 @@
 ```
 
 # 嵌套
+
 ```
 #header {
   color: black;
@@ -39,16 +43,20 @@
   }
 }
 ```
+
 其中可以使用&表示父级  
-@media (min-width: 768px)嵌套会将@media提取到最外层输出
+@media (min-width: 768px)嵌套会将@media 提取到最外层输出
 
 # 操作符
-可以在less中使用+, -, *, /运算符号
+
+可以在 less 中使用+, -, \*, /运算符号
 
 # function
+
 有很多自带函数可以使用
 
 # Namespaces and Accessors
+
 ```
 #bundle() {
   .button {
@@ -63,10 +71,12 @@
   .citation { ... }
 }
 ```
-用一个bundle包很多经常调用的  
+
+用一个 bundle 包很多经常调用的  
 使用:#bundle.tab()
 
 # Maps
+
 ```
 #colors() {
   primary: blue;
@@ -80,11 +90,14 @@
 ```
 
 # 文件导入
+
 @import "library"; // library.less
 @import "typo.css";
 
 # ~
+
 任意字符串保持原意
+
 ```
 @min768: ~"(min-width: 768px)";
 .element {
@@ -99,4 +112,5 @@
   }
 }
 ```
-3.4以上版本可以省略~和"",能正常识别
+
+3.4 以上版本可以省略~和"",能正常识别
