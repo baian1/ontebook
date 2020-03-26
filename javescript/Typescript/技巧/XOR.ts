@@ -49,8 +49,7 @@ namespace XOR {
 
   //Without用来设置不需要的key为key?:never
   type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
-  type XOR<T, U> = (T | U) extends object
-    ? //Without<T, U> & U,T中有U中没有的属性设为key?:never 交叉 U 完成一个类型定义
-      (Without<T, U> & U) | (Without<U, T> & T)
+  type XOR<T, U> = T | U extends object //Without<T, U> & U,T中有U中没有的属性设为key?:never 交叉 U 完成一个类型定义
+    ? (Without<T, U> & U) | (Without<U, T> & T)
     : T | U;
 }

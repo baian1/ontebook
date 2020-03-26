@@ -10,7 +10,7 @@
 使用这个 API 可以强制 service worker 控制这个页面。  
 在 activate 中使用
 
-# 更新
+## 更新
 
 以下情况下会触发更新：
 
@@ -40,7 +40,7 @@ navigator.serviceWorker.register("/sw.js").then(reg => {
 });
 ```
 
-# fetch
+## fetch
 
 FetchEvent 事件
 
@@ -50,7 +50,7 @@ FetchEvent 事件
 
 - FetchEvent.request 请求相关属性
 
-# ExtendableEvent.waitUntil()
+## ExtendableEvent.waitUntil()
 
 延迟状态的改变  
 比如:install 事件相关联的 EventHandler 被调用时，它延迟将被安装的 worker 视为 installing,直到传入的 promise 对象返回 resolve 才会把 server work 的状态改变
