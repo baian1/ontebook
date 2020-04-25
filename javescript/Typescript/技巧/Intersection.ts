@@ -10,7 +10,11 @@ interface A {
     name: string;
     age: number;
   };
-  b: never;
+  b: {
+    name2: string;
+    age2: number;
+  };
 }
 
+type AA = A[keyof A];
 type B = Intersection<A[keyof A]>;
