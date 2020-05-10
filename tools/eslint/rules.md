@@ -1,6 +1,6 @@
 # rules
 
-```
+```json
 {
   "rules": {
     "eqeqeq": "off",
@@ -12,9 +12,9 @@
 }
 ```
 
-# 为一组文件配置规则
+## 为一组文件配置规则
 
-```
+```json
 {
   "rules": {...},
   "overrides": [
@@ -28,11 +28,11 @@
 }
 ```
 
-# 具体规则
+## 具体规则
 
 1. 限制导入整个包
 
-```
+```json
 //对于Bar,我们必须从分离的路径/import-foo/baz/中导入
 "no-restricted-imports": ["error", {
   "paths": [{
@@ -43,9 +43,9 @@
 }]
 ```
 
-# 规则编写
+## 规则编写
 
-## meta
+### meta
 
 - type  
   描述错误等级,"problem"，"suggestion"或"layout"
@@ -58,9 +58,9 @@
 - replacedBy  
   在不推荐使用的规则的情况下，指定替换规则
 
-## create
+### create
 
-### context
+#### context
 
 传入一个对象 context,包含一些属性和方法
 属性：
@@ -77,12 +77,12 @@
 - getAncestors() - 返回当前遍历节点的祖先数组，从 AST 的根开始并继续通过当前节点的直接父节点。此数组不包括当前遍历的节点本身。
 - getDeclaredVariables(node)- 返回给定节点声明的变量列表。此信息可用于跟踪对变量的引用。
 - getFilename() - 返回与源关联的文件名。
-- getScope()- 返回当前遍历节点的范围。此信息可用于跟踪对变量的引用。
-- getSourceCode()- 返回一个 SourceCode 对象，您可以使用该对象处理传递给 ESLint 的源。
+- getScope() - 返回当前遍历节点的范围。此信息可用于跟踪对变量的引用。
+- getSourceCode() - 返回一个 SourceCode 对象，您可以使用该对象处理传递给 ESLint 的源。
 - markVariableAsUsed(name) - 使用当前作用域中的给定名称标记变量。这会影响 no-unused-vars 规则。返回 true 如果找到具有给定名称的变量并将其标记为已使用，否则返回 false。
-- report(descriptor)- 报告代码中的问题（请参阅专用部分）。
+- report(descriptor) - 报告代码中的问题。
 
-### return
+#### return
 
 返回一个对象,来应用于 AST 树
 key:
@@ -91,118 +91,80 @@ key:
 - if a key is a node type or a selector plus :exit, ESLint calls that visitor function while going up the tree
 - if a key is an event name, ESLint calls that handler function for code path analysis
 
-### 例子：
+#### 例子
 
+判断一个方法后的空格存在与否
+
+**_note:根据解析器的不同,`ASTNode`的属性也可能有所不同,注意兼容_**
+
+```js
+module.exports = {
+  meta: {
+    type: "layout",
+    category: "Stylistic Issues",
+    fixable: "whitespace",
+  },
+  create: (context) => {
+    var sourceCode = context.getSourceCode();
+    return {
+      //寻找到方法节点
+      MethodDefinition: (node) => {
+        //key为方法名
+        let index = node.key.range[1];
+        //获得代码并根据key的range获取key后一位字符
+        let text = sourceCode.getText();
+        //判断这个字符是不是"("
+        //进行空格的删除或补充
+        if (text[index] === "(") {
+          context.report({
+            node: node.key,
+            message: "方法名{{name}}后需要添加空格",
+            data: {
+              name: node.key.name,
+            },
+            fix(fixer) {
+              //在method后添加上一个空格
+              let res = fixer.replaceText(node.key, `${node.key.name} `);
+              return res;
+            },
+          });
+        }
+        return;
+      },
+    };
+  },
+};
 ```
-create(context) {
-  /**
-    * Returns the config option for the given node.
-    * @param {ASTNode} node - A node to get the config for.
-    * @returns {string} The config option.
-    */
-  function getConfigForNode(node) {
-    if (
-      node.generator &&
-      context.options.length > 1 &&
-      context.options[1].generators
-    ) {
-      return context.options[1].generators
-    }
 
-    return context.options[0] || "always"
-  }
+测试用例:
 
-  /**
-    * Determines whether the current FunctionExpression node is a get, set, or
-    * shorthand method in an object literal or a class.
-    * @param {ASTNode} node - A node to check.
-    * @returns {boolean} True if the node is a get, set, or shorthand method.
-    */
-  function isObjectOrClassMethod(node) {
-    const parent = node.parent
-
-    return (
-      parent.type === "MethodDefinition" ||
-      (parent.type === "Property" &&
-        (parent.method || parent.kind === "get" || parent.kind === "set"))
-    )
-  }
-
-  /**
-    * Determines whether the current FunctionExpression node has a name that would be
-    * inferred from context in a conforming ES6 environment.
-    * @param {ASTNode} node - A node to check.
-    * @returns {boolean} True if the node would have a name assigned automatically.
-    */
-  function hasInferredName(node) {
-    const parent = node.parent
-
-    return (
-      isObjectOrClassMethod(node) ||
-      (parent.type === "VariableDeclarator" &&
-        parent.id.type === "Identifier" &&
-        parent.init === node) ||
-      (parent.type === "Property" && parent.value === node) ||
-      (parent.type === "AssignmentExpression" &&
-        parent.left.type === "Identifier" &&
-        parent.right === node) ||
-      (parent.type === "ExportDefaultDeclaration" &&
-        parent.declaration === node) ||
-      (parent.type === "AssignmentPattern" && parent.right === node)
-    )
-  }
-
-  /**
-    * Reports that an unnamed function should be named
-    * @param {ASTNode} node - The node to report in the event of an error.
-    * @returns {void}
-    */
-  function reportUnexpectedUnnamedFunction(node) {
-    context.report({
-      node,
-      messageId: "unnamed",
-      data: { name: astUtils.getFunctionNameWithKind(node) },
-    })
-  }
-
-  /**
-    * Reports that a named function should be unnamed
-    * @param {ASTNode} node - The node to report in the event of an error.
-    * @returns {void}
-    */
-  function reportUnexpectedNamedFunction(node) {
-    context.report({
-      node,
-      messageId: "named",
-      data: { name: astUtils.getFunctionNameWithKind(node) },
-    })
-  }
-
-  return {
-    "FunctionExpression:exit"(node) {
-      // Skip recursive functions.
-      const nameVar = context.getDeclaredVariables(node)[0]
-
-      if (isFunctionName(nameVar) && nameVar.references.length > 0) {
-        return
-      }
-
-      const hasName = Boolean(node.id && node.id.name)
-      const config = getConfigForNode(node)
-
-      if (config === "never") {
-        if (hasName) {
-          reportUnexpectedNamedFunction(node)
-        }
-      } else if (config === "as-needed") {
-        if (!hasName && !hasInferredName(node)) {
-          reportUnexpectedUnnamedFunction(node)
-        }
-      } else {
-        if (!hasName && !isObjectOrClassMethod(node)) {
-          reportUnexpectedUnnamedFunction(node)
-        }
-      }
+```js
+const ruleTester = new RuleTester({ parserOptions });
+ruleTester.run("class-method_brackets-space", rule, {
+  //能通过测试的用例
+  valid: [
+    {
+      code: `
+        class A {
+          hello (){
+            }
+        };
+      `,
     },
-  }
+  ],
+  //不能通过的用例
+  invalid: [
+    {
+      code: `class A {hello(){}};`,
+      //报错信息
+      errors: [
+        {
+          message: "方法名hello后需要添加空格",
+        },
+      ],
+      //如果有fix修复代码,输出的结果与其对比
+      output: `class A {hello (){}};`,
+    },
+  ],
+});
 ```
