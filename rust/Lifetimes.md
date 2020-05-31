@@ -15,7 +15,7 @@ every reference in Rust has a lifetime.
 在早期 rust 中,都需要 annoction 生命周期,不然会编译不通过  
 在大量编写代码后,将发现了一些固定的 pattern,检查器会默认使用这些 pattern
 
-Lifetimes on function or method parameters are called **_input lifetimes_**, and lifetimes on return values are called **_output lifetimes_**.
+Lifetimes on function or method parameters are called _**input lifetimes**_, and lifetimes on return values are called _**output lifetimes**_.
 
 1. The first rule is that each parameter that is a reference gets its own lifetime parameter
 2. The second rule is if there is exactly one input lifetime parameter, that lifetime is assigned to all output lifetime parameters: fn foo<'a>(x: &'a i32) -> &'a i32.
