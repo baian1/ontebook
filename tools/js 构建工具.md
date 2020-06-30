@@ -4,6 +4,75 @@
 
 ## rollup
 
+支持 esmodules 的构建工具,可以进行 js 文件的打包.
+
+### 配置文件
+
+```js
+//可以导出数组,将会打包出多个文件
+//相当于多次调用rollup输入配置
+export default [
+  {
+    input: "main-a.js",
+    output: {
+      file: "dist/bundle-a.js",
+      format: "cjs",
+    },
+  },
+  {
+    //多个入口文件,如果有相同引用,将会被提取
+    input: ["main-b.js", "main-b1.js"],
+    //经过不同转换打包出文件
+    //适用与输出多种格式的文件
+    output: [
+      {
+        file: "dist/bundle-b1.js",
+        format: "cjs",
+      },
+      {
+        file: "dist/bundle-b2.js",
+        format: "es",
+      },
+    ],
+  },
+];
+```
+
+也支持异步加载地配置文件
+
+```js
+export default Promise.all([fetch("get-config-1"), fetch("get-config-2")]);
+```
+
+---
+
+支持从命令行输入 option 到配置项
+
+```sh
+rollup --config --configDebug
+```
+
+```js
+import defaultConfig from "./rollup.default.config.js";
+import debugConfig from "./rollup.debug.config.js";
+
+//将会获取到配置项
+export default (commandLineArgs) => {
+  if (commandLineArgs.configDebug === true) {
+    return debugConfig;
+  }
+  return defaultConfig;
+};
+```
+
+---
+
+将配置文件安装到 node_modules
+`rollup --config node:my-special-config`
+
+1. load the package "rollup-config-my-special-config";
+2. if that fails, it will then try to load "my-special-config"
+
 ## gulp
 
 gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.
