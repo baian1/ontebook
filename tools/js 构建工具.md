@@ -73,6 +73,27 @@ export default (commandLineArgs) => {
 1. load the package "rollup-config-my-special-config";
 2. if that fails, it will then try to load "my-special-config"
 
+### 选项
+
+1. output.manualChunks
+   会将声明的模块打包在一起,比如在多个组件内导入语言文件,可以根据这些文件的名字特征归类打包到一起,作为一个文件,减少多次动态引入小文件
+2. output.paths
+   将外部模块 id 映射到路径,可以是 cdn 的 url
+
+   ```js
+   export default {
+     input: "app.js",
+     external: ["d3"],
+     output: {
+       file: "bundle.js",
+       format: "amd",
+       paths: {
+         d3: "https://d3js.org/d3.v4.min",
+       },
+     },
+   };
+   ```
+
 ## gulp
 
 gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.
