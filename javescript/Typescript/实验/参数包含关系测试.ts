@@ -9,3 +9,5 @@ function B<T extends any = any>(nums: T) {
 }
 
 let ass = B("sad");
+
+export {};

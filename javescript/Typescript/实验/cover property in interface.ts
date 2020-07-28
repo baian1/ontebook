@@ -15,3 +15,5 @@ type change<
 };
 
 type C = change<A, B>;
+
+export {};

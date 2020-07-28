@@ -3,3 +3,5 @@ function test<T = {}>(a: string, b: T) {
 }
 
 test("", { a: 4 });
+
+export {};
