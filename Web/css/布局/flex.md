@@ -48,7 +48,8 @@ wrap 会根据子元素的 width 属性,先进行分行,再拉伸或压缩
 ## 轴排布
 
 - justify-content 元素在主轴上的排布
-- align-items 元素在交叉轴上的排布
+- align-content 存在多行时,侧轴上的元素排布
+- align-items 子项相对于 flex 容器,在交叉轴上的排布
   - align-self 单个弹性项目在侧轴对其方式,用于覆盖父元素的 align-items 行为
 
 # container
