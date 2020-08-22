@@ -21,3 +21,5 @@ type getReadonlyKey<T, U extends keyof T> = {
 type test = getReadonlyKey<people, "name">;
 type test1 = Pick<people, "age">;
 type c = Readonly<people>;
+
+export {};
