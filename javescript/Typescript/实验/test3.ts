@@ -22,4 +22,23 @@ type test = getReadonlyKey<people, "name">;
 type test1 = Pick<people, "age">;
 type c = Readonly<people>;
 
+/**
+ * 通过元组
+ * 获取接口中对应字段的属性
+ */
+type Lookup<T, K> = K extends keyof T ? T[K] : never;
+
+function fn<O, K extends ReadonlyArray<keyof O>>(
+  obj: O,
+  keys: K
+): { [I in keyof K]: Lookup<O, K[I]> } {
+  return a as any;
+  // return keys.map((key) => obj[key]);
+  // return keys;
+}
+
+const [id, nickname] = fn(
+  { name: 1, a333: "123" } as const,
+  ["name", "a333"] as const
+);
 export {};
