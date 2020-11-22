@@ -1,6 +1,6 @@
 # Texture Mapping
 
-定义一个点的不同属性(颜色,漫反射系数等),将其映射到Texture上
+定义一个点的不同属性(颜色,漫反射系数等),将其映射到 Texture 上
 
 ## Texture Applied to Surface
 
@@ -16,7 +16,7 @@
 1. Point Query
 2. (Avg)Range Query
 
------------
+---
 
 纹理太小:
 
@@ -24,7 +24,7 @@
 2. Bilinear 双线性插值,找到临近四个点颜色,更具点位位置,进行竖直方向和水平方向的插值
 3. Bicubic
 
-------------
+---
 
 纹理太大:
 
