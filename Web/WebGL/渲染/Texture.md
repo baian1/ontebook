@@ -57,3 +57,7 @@
 ## Provide Precomputed Shading
 
 纹理配合环境光,计算出阴影等信息,重新生成贴图,就可以减少运行中的计算
+
+## 3D textures
+
+三维贴图常用于医学领域
