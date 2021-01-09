@@ -183,3 +183,18 @@ exports.default = async function () {
 2. 使用 Chokidar
 
 ## snowpack
+
+利用rollup对node_module中的依赖进行打包输出es模块,对src下的文件中的导入模块重命名
+
+v0
+
+1. 读取dep中的依赖,利用rollup将其打包为单个js文件 esm模块
+
+v2
+
+1. pika:treeshake-inputs 直接从网站页面获取
+2. pika:peer-dependency-resolver
+3. snowpack:wrap-install-targets 对node_modules中的包进行tree-shaking
+   - option阶段修改入口 antd->@snowpack:antd
+   - resolveId阶段 对@snowpack开头返回source进入下一阶段
+   - load中,根据收集的导出信息,创建虚拟js文件`export {x,a,d} from 'antd'`
