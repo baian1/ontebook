@@ -31,3 +31,22 @@
          - Mesh subdivision
          - Mesh simplification
          - Mesh regularization
+
+## Mesh
+
+1. Mesh Subdivision 网格细分
+2. Mesh Simplification 网格简化
+3. Mesh Regularization 三角形调整,把一些长三角形拆分为正三角形,提高效果
+
+----------------
+
+Subdivision算法:
+
+1. Loop Subdivision
+2. Catmull-Clark Subdivision
+
+----------------
+
+Simplification算法:
+
+1. Quadric Error Mesh Simplification
