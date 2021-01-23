@@ -27,7 +27,7 @@ Merriam-Webster Dictionary: The darkening or coloring of an illustration or diag
    $$h=bisector(v,l)=\frac{v+l}{||v+l||}$$
    $$L_{s} = k^{s}(I/r^{2})max(0,cos \alpha)^{p} = k^{s}(I/r^{2})max(0,n \cdot h)^{p} $$
    blinn-phong模型忽视$n \cdot l$(对光线的吸收)
-2. Diffuse reflection
+2. Lambertian (Diffuse) reflection
    - $n\cdot l$ 由n与l的夹角,表示对能量的吸收(例子:以单位面积为基础,冬天,太阳光的夹角比夏天大,吸收的能量就少)
    - $(I/r^{2})$ light falloff(光线的衰减)
    - $k_{d}$ 漫反射,光被物体吸收部分,比如0表示吸收所有颜色,为黑色,1表示反射虽有颜色,白色, rgb三个通道设吸收率置后,就可以表现颜色了
@@ -35,13 +35,16 @@ Merriam-Webster Dictionary: The darkening or coloring of an illustration or diag
 3. Ambient lighting(环境光),简化:
     $$L_{a}=k_{a}I_{a}$$
 
+三种光照合并就是Blinn-Phong Reflection Model
+
 ## shading Frequencies
 
 1. Flat shading 一个三角面一个法线
-2. Gouraud shading 获取三角面每个顶点法线,对顶点进行着色,三角面像素颜色内做插值
-3. Phong shading 对三角形内的每个像素插值出法线,进行着色
+2. Gouraud shading 获取三角面每个顶点法线,对顶点进行着色,三角面像素颜色内做线性插值(非perspective correct interpolation).[具体描述](https://en.wikipedia.org/wiki/Gouraud_shading#Gouraud_shading_uses_linear_interpolation)
+3. Phong shading 与Gouraud shading不同之处在于,会在vertex阶段对三角形内的每个顶点计算法线,经过线性插值后获得每个像素的法线,之后在片源着色器中对每个像素进行颜色计算
 
-顶点法线获取:由周围面的法线求平均,复杂的由周围平面法线 求加权平均
+顶点法线获取:由周围面的法线求平均,复杂的由周围平面法线 求加权平均  
+有了顶点坐标后,三角面内的法线由顶点法线做插值得出
 
 ### 三角形内插值过程
 
@@ -70,7 +73,7 @@ $$\gamma=\frac{A_{C}}{A_{A}+A_{B}+A_{C}}$$
 
 注意:
 
-1. 重心坐标在投影变化下,会发生变化,所以需要在三维空间中进行计算,算插值
+1. 重心坐标在投影变化下,会发生变化,所以需要在三维空间中进行计算,算插值.[(三维空间中的插值)](https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/perspective-correct-interpolation-vertex-attributes)
 
 ## Graphics Pipeline
 
