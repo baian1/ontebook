@@ -12,6 +12,8 @@
 4. [Microfacet Material](http://www.pbr-book.org/3ed-2018/Reflection_Models/Microfacet_Models.html)
 
 5. Isotropic/Anisotropic Materials
+   - Isotropic 微表面法线分布均匀
+   - Anisotropic 微表面法线分布有朝向
 
 ## 折射
 
@@ -37,3 +39,8 @@ Snell's Window/Circle,人在水里看太阳,周围会是黑的,看不见
 2. Accurate representation of measure data
 3. Efficient evalution for arbitrary pairs of directions
 4. Good distributions available for importance sampling
+
+## Advanced Appearance Modeling
+
+- Non-surface models(非表面模型)
+  - Participating Media 雾,云等
