@@ -30,4 +30,6 @@ cpu读取文件后会不停地执行,一句一句往下.
 
 比如 v8 引擎会把设置断点、获取环境信息、执行脚本的能力通过 socket 暴露出去,socket 传递的信息格式就是 [v8 debug protocol](https://github.com/buggerjs/bugger-v8-client/blob/master/PROTOCOL.md).
 
+![v8 执行](./v8%20execute.png)
+
 client客户端(devtools,vscode...)通过与v8通过,就可以debugger js代码了
