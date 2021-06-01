@@ -33,3 +33,8 @@ cpu读取文件后会不停地执行,一句一句往下.
 ![v8 执行](./v8%20execute.png)
 
 client客户端(devtools,vscode...)通过与v8通过,就可以debugger js代码了
+
+#### vscode debuger探索
+
+1. node launch ,trace: true可以输出debugger日志
+2. vscode的debugger像是扫描所有js文件，通过js解析出sourcemapUrl，从sourcemap中解析出源文件，不断递归，传递给v8，建立了源文件与编译文件间的联系
