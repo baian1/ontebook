@@ -86,6 +86,13 @@ source map 使用了变种 VLQ,不采用 base-128 而是 base64,首位表示连�
 3. 使用 module 可支持 babel 这种预编译工具（在 webpack 里做为 loader 使用）。
 4. 使用 eval-source-map 模式可以减少网络请求。这种模式开启 DataUrl 本身包含完整 sourcemap 信息，并不需要像 sourceURL 那样，浏览器需要发送一个完整请求去获取 sourcemap 文件，这会略微提高点效率。而生产环境中则不宜用 eval，这样会让文件变得极大。
 
+### 构建与source map
+
+在代码构建中，source map是与source Code关联的，通常在 transform 的时候都需要返回source code/ast，source map
+
+webpack的loader需要返回code与sourceMap [babel-loader](https://github.com/babel/babel-loader/blob/main/src/index.js)
+rollup的transform需要返回code与map [rollup](https://rollupjs.org/guide/en/#transformers)
+
 ## 参考资料
 
 1. [Source Map 原理及源码探索](https://zhuanlan.zhihu.com/p/104519418?utm_source=qq&utm_medium=social&utm_oi=703260335347347456)
