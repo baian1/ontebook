@@ -29,6 +29,42 @@ es6 是静态的，与运行时的状态无关，可以进行可靠的静态分�
 1.[webpack 如何通过作用域分析消除无用代码](https://diverse.space/2018/05/better-tree-shaking-with-scope-analysis)  
 2.[Better tree shaking with deep scope analysis](https://medium.com/webpack/better-tree-shaking-with-deep-scope-analysis-a0b788c0ce77)
 
+# 库支持
+
+## webpack
+
+1. 嵌套的export的引用
+
+   ```js
+   // inner.js
+   export const a = 1;
+   export const b = 2;
+
+   // module.js
+   export * as inner from './inner';
+   // or import * as inner from './inner'; export { inner };
+
+   // user.js
+   import * as module from './module';
+   console.log(module.inner.a);
+   ```
+
+2. Inner-module tree-shaking
+
+   ```js
+   import { something } from './something';
+
+   function usingSomething() {
+     return something;
+   }
+
+   export function test() {
+     return usingSomething();
+   }
+   ```
+
+3.
+
 # 注意事项
 
 1. IIFE 立即执行函数不会被清除，如果 IIFE 的返回函数没有地方调用,才可以删除
