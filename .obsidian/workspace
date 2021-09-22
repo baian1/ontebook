@@ -1,0 +1,116 @@
+{
+  "main": {
+    "id": "97b59af1142237c0",
+    "type": "split",
+    "children": [
+      {
+        "id": "80ee71562fdbbe55",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "README.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bc25cf372bb9d1e1",
+    "type": "split",
+    "children": [
+      {
+        "id": "c035d09096b7d707",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1795549f14c94d91",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "14be2fa08e118b8d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#a112",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "cdbc9eae7c67cd69",
+    "type": "split",
+    "children": [
+      {
+        "id": "bd4f9812d7d7cea7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6068e55fb8eaff15",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "93f1c889ec33ebd7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f9cd3e3b25a90d84",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": true,
+                "extraContext": true,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "80ee71562fdbbe55",
+  "lastOpenFiles": [
+    "README.md",
+    "games/啊啊.md",
+    "tools/chorm devtools/Progressive Web Apps.md",
+    "未命名.md",
+    "tools/chorm devtools/console.md",
+    "数据库/mongodb/Performance/Index/Data Stored.md",
+    "tools/chorm devtools/关键路径渲染.md",
+    "Web/测试/网络请求.md"
+  ]
+}

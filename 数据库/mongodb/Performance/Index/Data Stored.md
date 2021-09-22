@@ -1,5 +1,5 @@
-#Data Stored
-##Wired Tiger
+# Data Stored
+## Wired Tiger
 将数据分成collection和index分别存储
 默认都在db文件夹中  
 --directoryperdb  
