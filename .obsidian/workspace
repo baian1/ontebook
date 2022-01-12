@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "reflect-metadata.md",
+            "file": "Web/WebGL/渲染/Cameras.md",
             "mode": "source"
           }
         }
@@ -39,7 +39,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#代理",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -48,8 +48,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -69,7 +68,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reflect-metadata.md"
+                "file": "Web/WebGL/渲染/Cameras.md"
               }
             }
           }
@@ -85,7 +84,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reflect-metadata.md",
+                "file": "Web/WebGL/渲染/Cameras.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -105,15 +104,15 @@
   },
   "active": "2cff7324931bb8af",
   "lastOpenFiles": [
-    "未命名.md",
-    "数据库/mongodb/Basic Cluster Adminstration/The Mongod/Server Tools.md",
-    "README.md",
-    "202109230112.md",
-    "202109230111.md",
-    "202109230110.md",
-    "202109230109.md",
-    "202109230108.md",
-    "games/啊啊.md",
-    "tools/chorm devtools/Progressive Web Apps.md"
+    "Web/WebGL/渲染/Cameras.md",
+    "Web/WebGL/渲染/animation.md",
+    "Web/WebGL/渲染/深度缓冲.md",
+    "Web/WebGL/2d/操作像素.md",
+    "数据库/redis/索引.md",
+    "tools/git/代理设置.md",
+    "tools/代理.md",
+    "rust/泛型.md",
+    "javescript/Typescript/语法/泛型.md",
+    "rust/基础概念.md"
   ]
 }
