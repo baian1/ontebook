@@ -1,6 +1,6 @@
 name: Dispatch action
 
-on: push
+on: workflow_dispatch
 
 jobs:
   log-the-inputs:
